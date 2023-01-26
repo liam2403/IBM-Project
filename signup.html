@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>IBM Learning App - Sign Up</title>
+    <style>
+
+  body {
+    background-color: #87CEFA;
+  }
+
+
+/* Define a class for the form fields */
+      .form-field {
+        display: block; /* Display each form field as a block element */
+        margin: 0 auto; /* Center the form field both horizontally and vertically */
+        margin-bottom: 10px; /* Add a margin at the bottom of each form field */
+        width: 50%; /* Set the width of the form field to 50% of the screen */
+        text-align: center; /* Center the text within the form field */
+        color: black; /* Change the text color to white */
+      }
+      
+      /* Center the form */
+      #signup-form {
+        margin: 0 auto; /* Center the form horizontally */
+        width: 50%; /* Set the width of the form to 50% of the screen */
+        text-align: center; /* Center the text within the form */
+    
+      }
+      
+      /* Position the logo in the top left corner */
+      
+      
+      /* Position the "Sign Up" heading in the center of the page */
+      h1 {
+        text-align: center; /* Center the heading text */
+        margin-top: 100px; /* Add a margin at the top of the*/
+      }
+
+      #signin {
+        position: absolute;
+        right: 10px;
+        top: 2px;
+        text-align: right;
+      }
+        
+      #logo {
+        position: absolute; /* Position the logo absolutely */
+        top: 2; /* Position the logo at the top of the page */
+        left: 4; /* Position the logo at the left of the page */
+        font-size: 26px; /* Increase the font size of the logo */
+        font-weight: bold; /* Make the logo text bold */
+        padding: 10px; /* Add some padding around the logo text */
+       color: #000022;
+      }
+    
+      </style>
+  </head>
+  <body>
+  <div id="logo">IBM LEARNING</div>
+   <div id="signin">     
+        <p>Already have an account?</p>
+        <button id="signin-btn" onclick="redirectToLogin()">Log in</button>
+
+<script>
+function redirectToLogin() {
+  window.location.href = "login.html";
+}
+</script>
+
+    </div>
+    <h1>Sign Up</h1>
+    <form id="signup-form">
+      <label for="username" class="form-field">Username:</label>
+      
+      <input type="text" id="username" name="username" required class="form-field">
+      
+      <label for="email" class="form-field">Email:</label>
+      <input type="email" id="email" name="email" required class="form-field">
+      
+      <label for="password" class="form-field">Password:</label>
+      <input type="password" id="password" name="password" required class="form-field">
+      
+      <label for="password-confirm" class="form-field">Confirm Password:</label>
+      <input type="password" id="password-confirm" name="password-confirm" required class="form-field">
+      <input type="submit" value="Sign Up"> 
+      <!--<input type="submit" value="Sign Up" onclick="location.href='homepage.html'"> /*alternatively: move to actual homepage (still without checking for correct inputs)*/  -->
+
+    </form>
+
+
+
+    <script>
+      function submitForm() {
+        // Get form values
+        var username = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var passwordConfirm = document.getElementById("password-confirm").value;
+
+// Validate form values
+if (password !== passwordConfirm) {
+  alert("Passwords do not match");
+  return;
+}
+
+// Send form data to server for processing
+// ...
+
+// Show success message
+alert("Sign up successful!");
+}
+</script>
+
+  </body>
+  </html>
+  
+
