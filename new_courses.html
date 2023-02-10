@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IBM Learning App - Homepage</title>
+    <style>
+body {
+background-color: #87CEFA;
+}
+#backhome {
+position: absolute;
+right: 10px;
+top: 2px;
+text-align: right;
+}
+
+/* Define a class for the form fields */
+.form-field {
+display: block; /* Display each form field as a block element*/
+margin: 0 auto; /* Center the form field both horizontally and vertically */
+margin-bottom: 10px; /*Add a margin at the bottom of each form field */
+width: 50%; /* Set the width of the form field to 50% of the screen */
+text-align: center; /* Center the text within the form field */
+color: black; /* Change the text color to white */
+}
+
+/* Position the logo in the top left corner */
+#logo {
+top: 2; /* Position the logo at the top of the page */
+left: 4; /* Position the logo at the left of the page */
+font-size: 26px; /* Increase the font size of the logo*/
+font-weight: bold; /* Make the logo text bold */
+padding: 10px; /*Add some padding around the logo text */
+color: #000022;
+}
+
+h1 {
+text-align: center;
+margin-top: 140px;
+}
+
+.container {
+display: flex;
+justify-content: space-between;
+width: 100%;
+}
+
+.left-section {
+width: 45%;
+border-right: 1px solid black;
+padding: 20px;
+}
+
+.right-section {
+width: 45%;
+padding: 20px;
+}
+
+.heading {
+text-align: center;
+margin-bottom: 20px;
+}
+
+/* Add a white box for the course list */
+.course-list {
+        background-color: white;
+        width: 100%;
+        height: 300px;
+        overflow: auto;
+        padding: 20px;
+        margin-top: 20px;
+}
+</style>
+
+  </head>
+  <body>
+    <div id="logo">IBM LEARNING</div>
+    <div id="backhome">     
+        <p>Go back to Homepage</p>
+        <button onclick="window.location.href = 'homepage.html';">Homepage</button>
+    </div>
+    <h1>Explore new courses</h1>
+    <div class="container">
+        <div class="left-section">
+          <h2 class="heading">Explore all courses in course directory</h2>
+          <div class="form-field">
+            <input type="text" id="search-bar" placeholder="Enter a keyword to search for a course..." />
+          </div>
+          <div class="form-field">
+            <label for="length-filter">Length</label>
+            <select id="length-filter">
+            <option disabled selected value> -- select an option -- </option>
+              <option value="short">Short</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="long">Long</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="length-filter">Length</label>
+            <select id="level-filter">
+                <option disabled selected value> -- select an option -- </option>
+              <option value="beginners">Beginners</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="advanced">Advanced</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="topic-filter">Topic</label>
+            <select id="topic-filter">
+                <option disabled selected value> -- select an option -- </option>
+              <option value="ai">AI</option>
+              <option value="data-science">Data Science</option>
+              <option value="quantum-computing">Quantum Computing</option>
+            </select>
+          </div>
+          <div style="background-color: white; padding: 20px;">
+            <p>List of courses will be displayed here...</p>
+          </div>
+        </div>
+        <div class="right-section">
+          <h2 class="heading">Chat with the course recommender to get personalized suggestions</h2>
+        </div>
+      </div>
+      </body>
+      </html>

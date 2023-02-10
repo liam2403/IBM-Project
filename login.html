@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>IBM Learning App - Log In</title>
+    <style>
+      body {
+        background-color: #87CEFA;
+      }
+
+      /* Define a class for the form fields */
+      .form-field {
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 10px;
+        width: 50%;
+        text-align: center;
+        color: black;
+      }
+
+      /* Center the form */
+      #login-form {
+        margin: 0 auto;
+        width: 50%;
+        text-align: center;
+      }
+
+      /* Position the logo in the top left corner */
+      #logo {
+        position: absolute;
+        top: 2px;
+        left: 4px;
+        font-size: 26px;
+        font-weight: bold;
+        padding: 10px;
+        color: #000022;
+      }
+
+      /* Position the "Log In" heading in the center of the page */
+      h1 {
+        text-align: center;
+        margin-top: 140px;
+      }
+
+      #signin {
+        position: absolute;
+        right: 10px;
+        top: 2px;
+        text-align: right;
+      }
+
+      /* Add style for the additional text */
+      #additional-text {
+        position: absolute;
+        left: 60px;
+        top: 200px;
+        font-size: 30px;
+        font-weight: bold;
+        color: #000022;
+      }
+
+      /* Add style for the subtext */
+      #subtext {
+        position: absolute;
+        left: 20px;
+        top: 240px;
+        font-size: 16px;
+        color: #000022;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="logo">IBM LEARNING</div>
+    <div id="signin">     
+      <p>Don't have an account?</p>
+      <button id="signup-btn" onclick="redirectToSignup()">Sign Up</button>
+    </div>
+  
+    <div id="additional-text">Welcome</div>
+    <div id="subtext"><br>We offer a course management system for IBM SkillBuild.<br><br>Please log in or sign up to get started.</div>
+    <h1>Log In</h1>
+    <form id="login-form">
+      <label for="username" class="form-field">Username:</label>
+      <input type="text" id="username" name="username" required class="form-field">
+      <label for="password" class="form-field">Password:</label>
+      <input type="password" id="password" name="password" required class="form-field">
+
+      <!--<input type="submit" value="Log in"> -->
+      <input type="submit" value="Log in" onclick="location.href='homepage.html'"> 
+      <!--/* alternatively: move to actual homepage (still without checking for correct inputs) */-->
+
+    </form>
+
+    <script>
+      // Add a submit event listener to the form
+      document.getElementById("login-form").addEventListener("submit", function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+        
+        // Get the values of the username and password fields
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        
+        /*
+        // Send a post request to the server with the username and password
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", /server-side-script-url/, true);
+        xhr.setRequestHeader(/Content-Type,.../);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            console.log(xhr.responseText);
+            }
+        };
+        xhr.send("username=" + username + "&password=" + password);*/
+        
+        // Show an error message if the username and password are not correct
+        alert("Incorrect username or password. Please try again.");
+      })
+      
+      // Function that redirects the user to the sign up pag
+      function redirectToSignup() {
+        window.location.href = "signup.html";
+      }
+    </script>
