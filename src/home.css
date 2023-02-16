@@ -1,0 +1,34 @@
+.nav-text {
+    color: #a381b9 !important;
+}
+
+.border-md-right {
+    border-right: 1px solid silver;
+}
+
+body {
+    background: #f1f1f1;
+}
+
+.cardbg {
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%); 
+}
+
+.cover {
+    overflow: hidden;
+    width: 225px;
+    height: 325px;
+    object-fit: cover;
+}
+
+.thumbnail {
+    margin-left:20px;
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    background: no-repeat 50%;
+    object-fit: cover;
+}
+
