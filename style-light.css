@@ -1,0 +1,43 @@
+
+.bg-lightgrey{
+    background-color: rgb(255, 255, 255);
+}
+
+.bg-lightblue{
+    background-color: rgb(221, 234, 247);
+}
+
+#user-prof-img{
+    max-height: 20%;
+}
+
+.bg-darker {
+    background-color: rgb(26, 26, 26);
+}
+
+.text-blue {
+    color: rgb(114, 169, 252);
+}
+
+.text-mutedwhite{
+    color:rgb(222, 222, 222);
+}
+
+.bg-blue {
+    background-color: rgb(17, 56, 97);
+}
+
+.bg-midblue {
+    background-color: rgb(28, 65, 158);
+}
+
+.bg-blue-btn {
+    background-color: rgb(12, 28, 92);
+    border: none;
+    box-shadow:inset;
+}
+
+.card-button:hover {
+    background-color: rgb(213, 226, 250);
+    transition: 0.4s;
+}
