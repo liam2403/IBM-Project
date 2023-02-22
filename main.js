@@ -1,6 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+
+import { getDatabase, ref, onValue } from "firebase/database";
+
+//const database = getDatabase();
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -16,6 +21,16 @@ const firebaseConfig = {
   appId: "1:241018868660:web:28446bb2812ac94e77d8e1",
   measurementId: "G-QQ7MFLR0TT"
 };
+
+// Listen for the courses 
+const db = getDatabase();
+const starCountRef = ref(db, 'posts/' + postId + '/starCount');
+onValue(starCountRef, (snapshot) => {
+  const data = snapshot.val();
+  updateStarCount(postElement, data);
+});
+// Listen for points
+
 
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
