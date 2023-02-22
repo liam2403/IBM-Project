@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
-import { getDatabase, ref, onValue } from "firebase/database";
+import { getDatabase, ref, onValue, child, push, update } from "firebase/database";
 
 //const database = getDatabase();
 
@@ -50,6 +50,36 @@ onValue(pointsRef, (snapshot) => {
   const data = snapshot.val();
   updateStarCount(postElement, data);
 });
+
+// Update points (might want to use a set for this) 
+function updatePoints(username, newPoints) {
+  const db = getDatabase();
+
+  // A post entry.
+  const postData = {
+    username: newPoints
+  };
+
+  // Get a key for a new Post.
+  const newPostKey = push(child(ref(db), 'posts')).key;
+
+  // Write the new post's data simultaneously in the posts list and the user's post list.
+  const updates = {};
+  updates['/posts/' + newPostKey] = postData;
+  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+
+  return update(ref(db), updates);
+}
+
+// Update user's courses
+function writeUserData(userId, name, email, imageUrl) {
+  const db = getDatabase();
+  set(ref(db, 'users/' + userId), {
+    username: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
 
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
