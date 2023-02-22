@@ -24,13 +24,32 @@ const firebaseConfig = {
 
 // Listen for the courses 
 const db = getDatabase();
-const starCountRef = ref(db, 'posts/' + postId + '/starCount');
-onValue(starCountRef, (snapshot) => {
+const coursesRef = ref(db, 'courses/');
+onValue(coursesRef, (snapshot) => {
   const data = snapshot.val();
   updateStarCount(postElement, data);
 });
-// Listen for points
 
+// Listen for the user courses
+const userCoursesRef = ref(db, 'userCourses/' + username);
+onValue(userCoursesRef, (snapshot) => {
+  const data = snapshot.val();
+  updateStarCount(postElement, data);
+});
+
+// Listen for points of all users
+const allPointsRef = ref(db, 'points/');
+onValue(allPointsRef, (snapshot) => {
+  const data = snapshot.val();
+  updateStarCount(postElement, data);
+});
+
+// Listen for the users points
+const pointsRef = ref(db, 'points/' + username);
+onValue(pointsRef, (snapshot) => {
+  const data = snapshot.val();
+  updateStarCount(postElement, data);
+});
 
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
