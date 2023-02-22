@@ -6,7 +6,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron ."
-
   },
   "repository": {
     "type": "git",
@@ -20,5 +19,8 @@
   "homepage": "https://github.com/liam2403/IBM-Project#readme",
   "devDependencies": {
     "electron": "^22.0.0"
+  },
+  "dependencies": {
+    "firebase": "^9.17.1"
   }
 }
