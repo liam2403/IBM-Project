@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+//import { initializeApp } from "firebase/app";
+//import { getAnalytics } from "firebase/analytics";
 
-import { getDatabase, ref, onValue, child, push, update } from "firebase/database";
+import { getDatabase, ref, onValue, set } from "firebase/database";
 
 //const database = getDatabase();
 
@@ -37,7 +37,7 @@ onValue(userCoursesRef, (snapshot) => {
   updateStarCount(postElement, data);
 });
 
-// Listen for points of all users
+// Listen for points of all users - this might need adjusting after the database resructure 
 const allPointsRef = ref(db, 'points/');
 onValue(allPointsRef, (snapshot) => {
   const data = snapshot.val();
@@ -51,33 +51,19 @@ onValue(pointsRef, (snapshot) => {
   updateStarCount(postElement, data);
 });
 
-// Update points (might want to use a set for this) 
+// Update points 
 function updatePoints(username, newPoints) {
-  const db = getDatabase();
-
-  // A post entry.
-  const postData = {
-    username: newPoints
-  };
-
-  // Get a key for a new Post.
-  const newPostKey = push(child(ref(db), 'posts')).key;
-
-  // Write the new post's data simultaneously in the posts list and the user's post list.
-  const updates = {};
-  updates['/posts/' + newPostKey] = postData;
-  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
-
-  return update(ref(db), updates);
-}
+    const db = getDatabase();
+    set(ref(db, 'points/' + username), {
+      points: newPoints,
+    });
+  }
 
 // Update user's courses
-function writeUserData(userId, name, email, imageUrl) {
+function writeUserData(username, courseList) {
   const db = getDatabase();
-  set(ref(db, 'users/' + userId), {
-    username: name,
-    email: email,
-    profile_picture : imageUrl
+  set(ref(db, 'userCourses/' + username), {
+    courses: courseList
   });
 }
 
