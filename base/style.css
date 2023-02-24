@@ -1,0 +1,115 @@
+:root, :root.light {
+    --blue1: #00aeef;
+    --blue2: rgb(17, 56, 97);
+    --blue3: rgb(12, 28, 92);
+
+    --primary-blue: #0a58ca;
+    --subtle-blue-bg: #cfe2ff;
+    --primary-emphasis: #000;
+    --emphasis2: #212529;
+    --emphasis-bg: #fff;
+
+    --img-filter-overlay: invert(7%) sepia(17%) saturate(488%) hue-rotate(168deg) brightness(93%) contrast(90%);
+}
+:root.dark{
+    --primary-blue: #6ea8fe;
+    --subtle-blue-bg: #031633;
+    --primary-emphasis: #adb5bd;
+    --emphasis2: #fff;
+    --emphasis-bg: #212529;
+    --blue2: #00aeef;
+    --img-filter-overlay: invert(97%) sepia(0%) saturate(6876%) hue-rotate(194deg) brightness(103%) contrast(94%);
+}
+
+.content-wrapper {
+    max-width: 1000px;
+}
+
+.text-sm {
+    font-size: .875rem;
+}
+
+.bg-dark-blue {
+    color: var(--emphasis-bg);
+    background-color: var(--blue2);
+    border: none;
+}
+
+.bg-blue {
+    color: var(--primary-blue);
+    background-color: var(--subtle-blue-bg);
+}
+
+.bg-emphasis {
+    color: var(--emphasis-bg);
+    background-color: var(--primary-emphasis);
+}
+
+.btn-outline-emphasis {
+    border: 1px solid var(--primary-emphasis);
+    color: var(--primary-emphasis);
+}
+
+.btn-outline-emphasis:hover {
+    color: var(--emphasis-bg);
+    background-color: var(--primary-emphasis);
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* dark mode stuff */
+
+.dark-mode-toggle {
+    color: var(--blue1);
+    cursor: pointer;
+}
+
+.search-bar-input {
+    background-color: var(--emphasis-bg);
+    height: 50px;
+}
+
+.btn-tiny {
+    --bs-btn-font-weight: 550;  
+    --bs-btn-padding-y: .3rem;
+    --bs-btn-padding-x: .6rem;
+    --bs-btn-font-size: 0.875rem;
+}
+
+.img-scaler {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.overlay {
+    fill: var(--subtle-blue-bg);
+}
+
+.img-filter {
+    filter: var(--img-filter-overlay);
+}
+
+.bg-blue2 {
+    background-color: var(--blue1);
+    border: none;
+}
+
+.bg-blue-3 {
+    color: var(--primary-blue);
+    background-color: var(--subtle-blue-bg);
+    border: none;
+}
+
+.feature-text {
+    font-size: .8rem;
+}

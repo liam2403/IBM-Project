@@ -1,0 +1,56 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 402" width="1000" height="402">
+	<title>IBM_logo-svg</title>
+	<style>
+		.s0 { fill: #1f70c1 } 
+	</style>
+	<filter id="f0">
+		<feFlood flood-color="#000000" flood-opacity="1" />
+		<feBlend mode="normal" in2="SourceGraphic"/>
+		<feComposite in2="SourceAlpha" operator="in" />
+	</filter>
+	<g id="Layer" filter="url(#f0)">
+		<g id="Layer">
+			<path id="Rectangle-path" class="s0" d="m0 373.2h194.4v27.9h-194.4z"/>
+			<path id="Rectangle-path_1_" class="s0" d="m0 319.8h194.4v28h-194.4z"/>
+			<path id="Rectangle-path_2_" class="s0" d="m55.5 266.5h83.4v28h-83.4z"/>
+			<path id="Rectangle-path_3_" class="s0" d="m55.5 213.3h83.4v27.9h-83.4z"/>
+			<path id="Rectangle-path_4_" class="s0" d="m55.5 160h83.4v27.9h-83.4z"/>
+			<path id="Rectangle-path_5_" class="s0" d="m55.5 106.6h83.4v27.9h-83.4z"/>
+			<path id="Rectangle-path_6_" class="s0" d="m0 53.3h194.4v27.9h-194.4z"/>
+			<path id="Rectangle-path_7_" class="s0" d="m0 0h194.4v27.9h-194.4z"/>
+		</g>
+		<g id="Layer">
+			<path id="Shape_16_" class="s0" d="m222.2 347.8h299c5-8.7 8.8-18.1 11.1-28h-310.1z"/>
+			<path id="Shape_17_" class="s0" d="m497.9 213.3h-220.2v27.9h243.5c-6.3-10.7-14.2-20.1-23.3-27.9z"/>
+			<path id="Shape_18_" class="s0" d="m277.7 160v27.9h220.2c9.3-7.8 17.2-17.2 23.3-27.9z"/>
+			<path id="Shape_19_" class="s0" d="m521.2 53.3h-299v27.9h310.1c-2.6-9.9-6.3-19.3-11.1-27.9z"/>
+			<path id="Shape_20_" class="s0" d="m429.3 0h-207.1v27.9h278.5c-18.6-17.2-43.9-27.9-71.4-27.9z"/>
+			<path id="Rectangle-path_8_" class="s0" d="m277.7 106.6h83.3v27.9h-83.3z"/>
+			<path id="Shape_21_" class="s0" d="m444.4 134.5h87.2c2.5-8.9 3.8-18.3 3.8-27.9h-91z"/>
+			<path id="Rectangle-path_9_" class="s0" d="m277.7 266.5h83.3v28h-83.3z"/>
+			<path id="Shape_22_" class="s0" d="m444.4 266.5v28h91c0-9.6-1.3-19-3.8-28z"/>
+			<path id="Shape_23_" class="s0" d="m222.2 400.9l207.1 0.2c27.7 0 52.8-10.6 71.5-27.9h-278.6z"/>
+		</g>
+		<g id="Layer">
+			<path id="Rectangle-path_10_" class="s0" d="m555.6 373.2h138.8v27.9h-138.8z"/>
+			<path id="Rectangle-path_11_" class="s0" d="m555.6 319.8h138.8v28h-138.8z"/>
+			<path id="Rectangle-path_12_" class="s0" d="m611 266.5h83.4v28h-83.4z"/>
+			<path id="Rectangle-path_13_" class="s0" d="m611 213.3h83.4v27.9h-83.4z"/>
+			<path id="Shape_24_" class="s0" d="m733.1 53.3h-177.5v27.9h187.1z"/>
+			<path id="Shape_25_" class="s0" d="m714.6 0h-159v27.9h168.6z"/>
+			<path id="Rectangle-path_14_" class="s0" d="m861 373.2h139v27.9h-139z"/>
+			<path id="Rectangle-path_15_" class="s0" d="m861 319.8h139v28h-139z"/>
+			<path id="Rectangle-path_16_" class="s0" d="m861 266.5h83.4v28h-83.4z"/>
+			<path id="Rectangle-path_17_" class="s0" d="m861 213.3h83.4v27.9h-83.4z"/>
+			<path id="Shape_26_" class="s0" d="m861 187.9h83.4v-27.9h-83.4-75.4l-7.9 22.5-7.8-22.5h-75.5-83.4v27.9h83.4v-25.7l8.8 25.7h149l8.8-25.7z"/>
+			<path id="Shape_27_" class="s0" d="m944.4 106.6h-140.4l-9.6 27.9h150z"/>
+			<path id="Shape_28_" class="s0" d="m840.9 0l-9.6 27.9h168.7v-27.9z"/>
+			<path id="Shape_29_" class="s0" d="m777.7 400.9l9.6-27.7h-19.2z"/>
+			<path id="Shape_30_" class="s0" d="m759.3 347.8h36.9l9.9-28h-56.6z"/>
+			<path id="Shape_31_" class="s0" d="m740.6 294.5h74.3l9.8-28h-93.9z"/>
+			<path id="Shape_32_" class="s0" d="m722 241.2h111.6l9.5-27.9h-130.7z"/>
+			<path id="Shape_33_" class="s0" d="m611 134.5h150.1l-9.6-27.9h-140.5z"/>
+			<path id="Shape_34_" class="s0" d="m812.9 81.2h187.1v-27.9h-177.6z"/>
+		</g>
+	</g>
+</svg>
