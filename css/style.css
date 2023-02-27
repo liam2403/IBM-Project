@@ -1,13 +1,13 @@
 :root, :root.light {
-    --blue1: #00aeef;
-    --blue2: rgb(17, 56, 97);
-    --blue3: rgb(12, 28, 92);
-
     --primary-blue: #0a58ca;
     --subtle-blue-bg: #cfe2ff;
-    --primary-emphasis: #000;
+    --primary-emphasis: #212529;
     --emphasis2: #212529;
     --emphasis-bg: #fff;
+
+    --blue1: #00aeef;
+    --blue2: rgb(17, 56, 97);
+    --blue3: rgb(213, 226, 250);
 
     --img-filter-overlay: invert(7%) sepia(17%) saturate(488%) hue-rotate(168deg) brightness(93%) contrast(90%);
 }
@@ -17,12 +17,15 @@
     --primary-emphasis: #adb5bd;
     --emphasis2: #fff;
     --emphasis-bg: #212529;
+    
     --blue2: #00aeef;
+    --blue3: rgb(12, 28, 92);
+
     --img-filter-overlay: invert(97%) sepia(0%) saturate(6876%) hue-rotate(194deg) brightness(103%) contrast(94%);
 }
 
 .content-wrapper {
-    max-width: 1000px;
+    max-width: 1200px;
 }
 
 .text-sm {
@@ -38,11 +41,13 @@
 .bg-blue {
     color: var(--primary-blue);
     background-color: var(--subtle-blue-bg);
+    border-color: var(--primary-blue);
 }
 
 .bg-emphasis {
     color: var(--emphasis-bg);
     background-color: var(--primary-emphasis);
+    border: none;
 }
 
 .btn-outline-emphasis {
@@ -59,6 +64,10 @@ body {
     font-family: 'Open Sans', sans-serif;
 }
 
+.fw-extrabold {
+    font-weight: 800;
+}
+
 /* dark mode stuff */
 
 .dark-mode-toggle {
@@ -71,28 +80,10 @@ body {
     height: 50px;
 }
 
-.btn-tiny {
-    --bs-btn-font-weight: 550;  
-    --bs-btn-padding-y: .3rem;
-    --bs-btn-padding-x: .6rem;
-    --bs-btn-font-size: 0.875rem;
-}
-
 .img-scaler {
-    max-width: 500px;
+    max-width: 600px;
     width: 100%;
     height: auto;
-}
-
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.overlay {
-    fill: var(--subtle-blue-bg);
 }
 
 .img-filter {
@@ -110,6 +101,86 @@ body {
     border: none;
 }
 
-.feature-text {
-    font-size: .8rem;
+.img-preview-crop {
+    max-height: 100px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.btn-outline-blue {
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+span.keeptogether {
+    white-space: nowrap ;
+} 
+
+@media screen{
+    .slider_wrapper .splide {
+        padding: 0 3.5rem;
+    }
+}
+
+.text-emphasis {
+    color: var(--primary-emphasis);
+}
+
+.card-button:hover {
+    background-color: var(--blue3);
+    transition: 0.4s;
+}
+
+.btn-icon {
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.img-profile-crop {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.img-badge-crop {
+    border-radius: 15px;
+    overflow: hidden;
+    max-width: 100px;
+    object-fit: cover;
+    width: 100%;
+    height: auto;
+}
+
+.is-dragging {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+    background: rgb(50, 50, 50);
+    color: white;
+}
+
+.card-course-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
+  
+    padding: 12px;
+    border-radius: 4px;
+    min-height: 120px;
+  
+    flex-shrink: 0;
+}
+  
+.task {
+    background: white;
+    color: black;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  
+    padding: 12px;
+    border-radius: 4px;
+  
+    font-size: 16px;
+    cursor: move;
 }

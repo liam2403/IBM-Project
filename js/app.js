@@ -33,6 +33,8 @@ function toggleDarkMode() {
     }
 }
 
+// COURSE DIRECTORY
+
 function hideFilters() {
     document.getElementById('column_show_filters').hidden = false;
     document.getElementById('filters-column').hidden = true;
@@ -49,4 +51,38 @@ function showFilters() {
     document.getElementById('courses-column').classList.remove('col-xl-12', 'col-lg-12', 'col-md-12', 'col-sm-12');
     document.getElementById('courses-grid').classList.add('row-cols-md-2', 'row-cols-lg-3');
     document.getElementById('courses-grid').classList.remove('row-cols-sm-2','row-cols-md-3', 'row-cols-lg-4');
+}
+
+// HOMEPAGE
+
+
+document.addEventListener( 'DOMContentLoaded', function () {
+    mountSplides();
+} );
+
+function mountSplides() {
+    var elms = document.getElementsByClassName('splide');
+    
+    for ( var i = 0; i < elms.length; i++ ) {
+      new Splide( elms[i] , {
+        type: 'loop',
+        perPage: 3,
+        perMove: 1,
+        gap: '1rem',
+        drag: 'free',
+        snap: true,
+        pagination: false,
+        breakpoints: {
+            800: {
+                perPage: 2,
+                gap: '0.7rem',
+            },
+            480: {
+                perPage: 1,
+                gap: '0.7rem',
+            }
+        }
+      }
+        ).mount();
+    }
 }
