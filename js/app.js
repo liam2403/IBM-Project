@@ -1,7 +1,6 @@
+// Function to toggle additional dark mode elements
 function toggleDarkMode() {
     var elem = document.body;
-    // elem.dataset.bsTheme =
-    //     elem.dataset.bsTheme == "light" ? "dark" : "light";
     if (elem.dataset.bsTheme == 'light') {
         elem.dataset.bsTheme = 'dark';
         document.getElementById('btn_toggle_light').hidden = false;
@@ -9,12 +8,6 @@ function toggleDarkMode() {
 
         document.getElementById('img_ibm_logo').src = '../img/IBM_logo_blue.svg';
         document.getElementById('img_se_logo').src = '../img/skills_enablement_logo_blue.svg';
-
-        // const bluebuttons = document.getElementsByClassName('btn-blue-light');
-        // for (let i = 0; i < bluebuttons.length; i++) {
-        //     bluebuttons[i].classList.add('btn-blue-dark');
-        //     bluebuttons[i].classList.remove('btn-blue-light');
-        // }
         document.documentElement.className = 'dark';
     } else {
         elem.dataset.bsTheme = 'light';
@@ -23,12 +16,6 @@ function toggleDarkMode() {
 
         document.getElementById('img_ibm_logo').src = '../img/IBM_logo_black.svg';
         document.getElementById('img_se_logo').src = '../img/skills_enablement_logo.svg';
-
-        // const bluebuttons = document.getElementsByClassName('btn-blue-dark');
-        // for (let i = 0; i < bluebuttons.length; i++) {
-        //     bluebuttons[i].classList.add('btn-blue-light');
-        //     bluebuttons[i].classList.remove('btn-blue-dark');
-        // }
         document.documentElement.className = 'light';
     }
 }

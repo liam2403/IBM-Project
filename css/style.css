@@ -24,6 +24,10 @@
     --img-filter-overlay: invert(97%) sepia(0%) saturate(6876%) hue-rotate(194deg) brightness(103%) contrast(94%);
 }
 
+.sticky-offset {
+    top: 61px;
+}
+
 .content-wrapper {
     max-width: 1200px;
 }
@@ -44,6 +48,11 @@
     border-color: var(--primary-blue);
 }
 
+.bg-subtle-blue {
+    
+    background-color: var(--subtle-blue-bg);
+}
+
 .bg-emphasis {
     color: var(--emphasis-bg);
     background-color: var(--primary-emphasis);
@@ -62,6 +71,11 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
+}
+
+.scrollbar-container {
+    height: 500px;
+    overflow-y: scroll;
 }
 
 .fw-extrabold {
@@ -124,6 +138,10 @@ span.keeptogether {
 
 .text-emphasis {
     color: var(--primary-emphasis);
+}
+
+.text-emphasis-bg {
+    color: var(--emphasis-bg);
 }
 
 .card-button:hover {
