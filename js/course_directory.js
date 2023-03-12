@@ -1,14 +1,19 @@
 // GLOBAL
 // 01 - Course Data API (Json)
-const api = "http://raw.githubusercontent.com/SilverDragon-RY/nothing_here/main/sample";
+const api = "https://ibm-education-app-default-rtdb.europe-west1.firebasedatabase.app/.json";
+// https://ibm-education-app-default-rtdb.europe-west1.firebasedatabase.app/
+// 02 - Available Tag Categories
+const CAT = ["Pace", "Topic", "Difficulty", "Cost"];
 
 // Function 00 - Init Instance
 function initPageInstance() {
     var app = new Vue({
         el: '#content',
         data: {
-            // course data info
+            // course data info ALL
             all: ["None"],
+            // course data info CURRENT
+            courses: ["None"],
             // Filter, course table style
             isFilterShowing: true,
             courseCol_FilterShown: ['col-lg-9', 'col-md-8', 'col-sm-7'],
@@ -75,8 +80,36 @@ function toggleDarkMode() {
 
 // Function 02 - Construct Data - TBD
 function constructFunc(course_data) {
-    // Not usefull for now
-    return course_data;
+    let Courses = [];
+    let rawCourses = course_data.courses;
+    for (course in rawCourses) {
+        // construct individual course data
+        newCourse = {};
+        // ESSENTIAL
+        newCourse.name = course;
+        newCourse.imgsrc = rawCourses[course].imgsrc;
+        newCourse.description = rawCourses[course].Description;
+        newCourse.link = rawCourses[course].Link;
+        newCourse.tags = [];
+        newCourse.rating = 0;
+        newCourse.rated = 0;
+        // None Essential : Check before use.
+        for (attr in rawCourses[course]) {
+            this_attr = rawCourses[course][attr];
+            // is it a tag?
+            if (CAT.includes(attr)){
+                newCourse.tags.push(this_attr);
+            };
+            // is it rating?
+            if (attr == "rating") {
+                newCourse.rating = rawCourses[course].rating;
+                newCourse.rated = rawCourses[course].rated;
+            };
+        };
+        // Finish
+        Courses.push(newCourse);
+    }
+    return Courses;
 }
 
 // Function 03 - Hide Filter - Done
@@ -96,6 +129,7 @@ function fetchCourseData(app){
         courses_ALL = response.json();
         courses_ALL.then((data) => {
             var allCourse = constructFunc(data);
+            app.courses = allCourse;
             app.all = allCourse;
             return allCourse;
         })
@@ -104,7 +138,8 @@ function fetchCourseData(app){
 
 // Function 06 - Update Filter - TBD
 function updateFilter() {
-    var newFilter = [];
+    // Tickbox Function
+    let newFilter = [];
     for (i in x) {
         for (var j = 0; j < x[i].length; j++) {
             if (x[i][j].checked) {
@@ -112,8 +147,27 @@ function updateFilter() {
             }
         }
     }
-    // TBD - Filter function
     app.filtered = newFilter;
+    // Filter Function
+    let newContent = [];
+    if (newFilter.length == 0) {
+        // show all
+        newContent = app.all;
+        app.searched = "";
+    }
+    else {
+        // filter
+        for (i in app.all) {
+            for (j in app.all[i].tags) {
+                if (newFilter.includes(app.all[i].tags[j]) == true) {
+                    newContent.push(app.all[i]);
+                }
+            }
+        }
+        app.searched = "Showing " + newContent.length + " Results of filtered tags."
+    }
+    // update
+    app.courses = newContent;
 }
 
 // Function 07 - Remove Filter - TBD
@@ -133,7 +187,7 @@ function removeFilter(t) {
 document.addEventListener('DOMContentLoaded', function () {
     // Init Page Instance
     app = initPageInstance();
-    // Update Tick Box
+    // Update Tickbox Element
     var field = document.getElementsByName("field");
     var level = document.getElementsByName("level");
     var feature = document.getElementsByName("feature");

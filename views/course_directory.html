@@ -9,8 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- JavaScript -->
+    <script src="https://unpkg.com/vue@2.5.2/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-    <script src='../js/app.js'></script>
+    <script src='../js/course_directory.js'></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -67,245 +68,213 @@
     </nav>
 
     <!-- TOP SEARCH BAR -->
-    <section id="search-section">
-        <div class="container content-wrapper mt-4 py-2">
-            <div class="row">
-                <div class="col-md-10 col-lg-8 mx-auto">         
-                    <form>
-                        <div class="input-group search-bar">
-                            <input type="text" class="form-control search-bar-input rounded-start-pill" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <button type="submit" class="btn btn-outline-success rounded-end-circle">
-                                <i class="fa-solid fa-magnifying-glass me-1"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MAIN BODY -->
-    <section id="main-body" class="my-2">
-        <div class="container content-wrapper mt-4">
-            <div class="row">
-                <div class="col-12 col-lg-3 col-md-4 col-sm-5 py-1" id="filters-column"> <!-- //FILTERS SIDEBAR// -->
-                    <div class="d-grid">
-                        <button class="btn btn-primary bg-blue fw-semibold px-4" type="button" id="btn_hide_filters" onclick="hideFilters()"><i class="fa-solid fa-filter me-2"></i>Hide filters</button>
-                    </div>
-                    <div class="accordion mt-2" id="filter-list">
-                        <div class="accordion-item"> <!-- //FILTER CATEGORY// -->
-                            <h2 class="accordion-header filter-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse1" aria-expanded="true" aria-controls="panelsStayOpen-collapse1">
-                                Subject
+    <div id="content">
+        <!-- Search -->
+        <section id="search-section">
+            <div class="container content-wrapper mt-4 py-2">
+                <div class="row">
+                    <div class="col-md-10 col-lg-8 mx-auto">
+                        <form>
+                            <div class="input-group search-bar">
+                                <input type="text" class="form-control search-bar-input rounded-start-pill" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <button type="submit" class="btn btn-outline-success rounded-end-circle">
+                                    <i class="fa-solid fa-magnifying-glass me-1"></i>
                                 </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapse1" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading1">
-                                <div class="accordion-body">
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f1c1">
-                                    <label class="form-check-label" for="checkbox-f1c1">Artificial intelligence</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f1c2">
-                                    <label class="form-check-label" for="checkbox-f1c2">Cloud computing</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f1c3">
-                                    <label class="form-check-label" for="checkbox-f1c3">Cyber security</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f1c4">
-                                    <label class="form-check-label" for="checkbox-f1c4">Data science</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f1c5">
-                                    <label class="form-check-label" for="checkbox-f1c5">Design thinking</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f1c6">
-                                    <label class="form-check-label" for="checkbox-f1c6">Quantum computing</label><br>
-                                </div>
                             </div>
-                        </div>
-                        <div class="accordion-item"> <!-- //FILTER CATEGORY// -->
-                            <h2 class="accordion-header filter-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse2" aria-expanded="true" aria-controls="panelsStayOpen-collapse2">
-                                Level
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapse2" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading2">
-                                <div class="accordion-body">
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f2c1">
-                                    <label class="form-check-label" for="checkbox-f2c1">All levels</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f2c2">
-                                    <label class="form-check-label" for="checkbox-f2c2">Beginner</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f2c3">
-                                    <label class="form-check-label" for="checkbox-f2c3">Intermediate</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f2c4">
-                                    <label class="form-check-label" for="checkbox-f2c4">Expert</label><br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item"> <!-- //FILTER CATEGORY// -->
-                            <h2 class="accordion-header filter-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse3" aria-expanded="true" aria-controls="panelsStayOpen-collapse3">
-                                Features
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapse3" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading3">
-                                <div class="accordion-body">
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f3c1">
-                                    <label class="form-check-label" for="checkbox-f3c1">IBM badge</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f3c2">
-                                    <label class="form-check-label" for="checkbox-f3c2">Self-paced</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f3c3">
-                                    <label class="form-check-label" for="checkbox-f3c3">Subtitles</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f3c4">
-                                    <label class="form-check-label" for="checkbox-f3c4">Quizzes</label><br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item"> <!-- //FILTER CATEGORY// -->
-                            <h2 class="accordion-header filter-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse4" aria-expanded="true" aria-controls="panelsStayOpen-collapse4">
-                                Rating
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapse4" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading4">
-                                <div class="accordion-body">
-                                    <input class="form-check-input me-1" name="rating" type="radio" value="" id="checkbox-f4c5">
-                                    <label class="form-check-label" for="checkbox-f4c5">All ratings</label><br>
-                                    <input class="form-check-input me-1" name="rating" type="radio" value="" id="checkbox-f4c1">
-                                    <label class="form-check-label" for="checkbox-f4c1">
-                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i>
-                                        4.5+</label><br>
-                                    <input class="form-check-input me-1" name="rating" type="radio" value="" id="checkbox-f4c2">
-                                    <label class="form-check-label" for="checkbox-f4c2">
-                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
-                                        4.0+</label><br>
-                                    <input class="form-check-input me-1" name="rating" type="radio" value="" id="checkbox-f4c3">
-                                    <label class="form-check-label" for="checkbox-f4c3">
-                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i><i class="fa-regular fa-star"></i>
-                                        3.5+</label><br>
-                                    <input class="form-check-input me-1" name="rating" type="radio" value="" id="checkbox-f4c4">
-                                    <label class="form-check-label" for="checkbox-f4c4">
-                                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
-                                        3.0+</label><br>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item"> <!-- //FILTER CATEGORY// -->
-                            <h2 class="accordion-header filter-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse5" aria-expanded="true" aria-controls="panelsStayOpen-collapse5">
-                                Price
-                                </button>
-                            </h2>
-                            <div id="panelsStayOpen-collapse5" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading5">
-                                <div class="accordion-body">
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f5c1">
-                                    <label class="form-check-label" for="checkbox-f5c1">Free</label><br>
-                                    <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f5c2">
-                                    <label class="form-check-label" for="checkbox-f5c2">Paid</label><br>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col col-lg-9 col-md-8 col-sm-7" id="courses-column"> <!-- //RIGHT HAND COLUMN// -->
-                    <!-- //INFO OF SEARCH// -->
-                    <div class="row">
-                        <div class="col pb-2">
-                            <h4>100 results for "Artificial Intelligence"</h4>
-                        </div>
-                    </div>
-                    <div class="row gy-3 gx-2 mb-3">
-                        <div hidden class="col col-12 col-lg-2 col-md-3 col-sm-4" id="column_show_filters">
-                            <div class="d-grid">
-                                <button class="btn btn-primary bg-blue fw-semibold me-2" type="button" id="btn_show_filters" onclick="showFilters()"><i class="fa-solid fa-filter me-2"></i>Show filters</button>
-                            </div>
-                        </div>
-                        <div class="col align-self-center">
-                            <button type="button" class="btn btn-sm btn-outline-emphasis rounded-pill px-3 fw-medium">Beginner<i class="fa-solid fa-xmark ms-1"></i></button>
-                            <button type="button" class="btn btn-sm btn-outline-emphasis rounded-pill px-3 fw-medium">Intermediate<i class="fa-solid fa-xmark ms-2"></i></button>
-                            <button type="button" class="btn btn-sm btn-outline-emphasis rounded-pill px-3 fw-medium">Free<i class="fa-solid fa-xmark ms-2"></i></button>
-                            <button type="button" class="btn btn-sm btn-outline-emphasis rounded-pill px-3 fw-medium me-3">Paid<i class="fa-solid fa-xmark ms-2"></i></button>
-                            <button type="button" class="btn btn-sm btn-dark bg-blue2 rounded-pill px-3 fw-medium">Clear all</button>
-                        </div>
-                    </div>
-                    <!-- //LIST OF COURSES// -->
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 mb-3" id="courses-grid">
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="../img/dummy01.png" class="card-img-top img-preview-crop" alt="Course image">
-                                <div class="card-header">4.5<i class="fa-solid fa-star ms-1"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke me-1"></i>(102)</div>
-                                <div class="card-body">
-                                    <h5 class="card-title fs-6 fw-bold">Getting started with enterprise grade AI</h5>
-                                    <p class="card-text text-sm mb-2"><strong>Skills:</strong> AI, AI history, AI industry adoption, AI in law, AI job market, Chatbots, Deep learning, Machine learning, NLP, Robotics, Self-driving cars, Visual recognition.</p>
-                                    <button type="button" data-bs-theme="dark" class="btn btn-secondary bg-emphasis fw-semibold text-sm mt-1">Explore<i class="fa-solid fa-arrow-right-long ms-2"></i></button>
-                                </div>
-                                <div class="card-footer">
-                                    <span class="badge text-bg-warning"><i class="fa-solid fa-certificate me-1"></i>Badge</span>
-                                    <span class="badge text-bg-info"><i class="fa-solid fa-signal me-1"></i>Beginner</span>
-                                    <span class="badge text-bg-success"><i class="fa-solid fa-tag me-1"></i>Free</span>
-                                    <span class="badge text-bg-secondary"><i class="fa-solid fa-chalkboard-user me-1"></i>Self-paced</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="../img/dummy02.png" class="card-img-top img-preview-crop" alt="Course image">
-                                <div class="card-header">4.5<i class="fa-solid fa-star ms-1"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke me-1"></i>(34)</div>
-                                <div class="card-body">
-                                    <h5 class="card-title fs-6 fw-bold">Exploratory Data Analysis for Machine Learning</h5>
-                                    <p class="card-text text-sm mb-2">This first course in the IBM Machine Learning Professional Certificate introduces you to Machine Learning and the content of...</p>
-                                    <button type="button" data-bs-theme="dark" class="btn btn-secondary bg-emphasis fw-semibold text-sm mt-1">Explore<i class="fa-solid fa-arrow-right-long ms-2"></i></button>
-                                </div>
-                                <div class="card-footer">
-                                    <span class="badge text-bg-info"><i class="fa-solid fa-signal me-1"></i>Intermediate</span>
-                                    <span class="badge text-bg-success"><i class="fa-solid fa-tag me-1"></i>Paid</span>
-                                    <span class="badge text-bg-secondary"><i class="fa-solid fa-chalkboard-user me-1"></i>Self-paced with labs</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="../img/dummy03.png" class="card-img-top img-preview-crop" alt="Course image">
-                                <div class="card-header">4.5<i class="fa-solid fa-star ms-1"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke me-1"></i>(12)</div>
-                                <div class="card-body">
-                                    <h5 class="card-title fs-6 fw-bold">Reducing Unfair Bias in Machine Learning</h5>
-                                    <p class="card-text text-sm mb-2">This course will give you an overview on the concept of fairness which helps in building trust in AI and how "AI Fairness 360" open source toolkit can...</p>
-                                    <button type="button" data-bs-theme="dark" class="btn btn-secondary bg-emphasis fw-semibold text-sm mt-1">Explore<i class="fa-solid fa-arrow-right-long ms-2"></i></button>
-                                </div>
-                                <div class="card-footer">
-                                    <span class="badge text-bg-info"><i class="fa-solid fa-signal me-1"></i>Beginner</span>
-                                    <span class="badge text-bg-success"><i class="fa-solid fa-tag me-1"></i>Free</span>
-                                    <span class="badge text-bg-secondary"><i class="fa-solid fa-chalkboard-user me-1"></i>Self-paced</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-100">
-                                <img src="../img/dummy04.png" class="card-img-top img-preview-crop" alt="Course image">
-                                <div class="card-header">4.5<i class="fa-solid fa-star ms-1"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke me-1"></i>(24)</div>
-                                <div class="card-body">
-                                    <h5 class="card-title fs-6 fw-bold">IBM Watson Assistant Methodology</h5>
-                                    <p class="card-text text-sm mb-2">This course covers the methods of preparing for, training, and implementing an IBM Watson Assistant chatbot.</p>
-                                    <button type="button" data-bs-theme="dark" class="btn btn-secondary bg-emphasis fw-semibold text-sm mt-1">Explore<i class="fa-solid fa-arrow-right-long ms-2"></i></button>
-                                </div>
-                                <div class="card-footer">
-                                    <span class="badge text-bg-info"><i class="fa-solid fa-signal me-1"></i>Intermediate</span>
-                                    <span class="badge text-bg-success"><i class="fa-solid fa-tag me-1"></i>Paid</span>
-                                    <span class="badge text-bg-secondary"><i class="fa-solid fa-chalkboard-user me-1"></i>Self-paced</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- PAGINATION -->
-                    <div class="row mt-4">
-                        <nav aria-label="Page navigation">
-                            <ul class="pagination justify-content-center">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                        </nav>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- MAIN BODY -->
+        <section id="main-body" class="my-2">
+            <div class="container content-wrapper mt-4">
+                <div class="row">
+                    <div class="col-12 col-lg-3 col-md-4 col-sm-5 py-1" v-bind:hidden="!isFilterShowing">
+                        <!-- //FILTERS SIDEBAR// -->
+                        <div class="d-grid">
+                            <button class="btn btn-primary bg-blue fw-semibold px-4" type="button" id="btn_hide_filters" onclick="hideFilters()"><i class="fa-solid fa-filter me-2"></i>Hide filters</button>
+                        </div>
+                        <div class="accordion mt-2" id="filter-list">
+                            <div class="accordion-item">
+                                <!-- //FILTER CATEGORY// -->
+                                <h2 class="accordion-header filter-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse1" aria-expanded="true" aria-controls="panelsStayOpen-collapse1">
+                                        Subject
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapse1" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading1">
+                                    <div class="accordion-body">
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Artificial intelligence" id="checkbox-f1c1">
+                                        <label class="form-check-label" for="checkbox-f1c1">Artificial intelligence</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Cloud computing" id="checkbox-f1c2">
+                                        <label class="form-check-label" for="checkbox-f1c2">Cloud computing</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Cyber security" id="checkbox-f1c3">
+                                        <label class="form-check-label" for="checkbox-f1c3">Cyber security</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Data science" id="checkbox-f1c4">
+                                        <label class="form-check-label" for="checkbox-f1c4">Data science</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Design thinking" id="checkbox-f1c5">
+                                        <label class="form-check-label" for="checkbox-f1c5">Design thinking</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Quantum computing" id="checkbox-f1c6">
+                                        <label class="form-check-label" for="checkbox-f1c6">Quantum computing</label><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <!-- //FILTER CATEGORY// -->
+                                <h2 class="accordion-header filter-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse2" aria-expanded="true" aria-controls="panelsStayOpen-collapse2">
+                                        Level
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapse2" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading2">
+                                    <div class="accordion-body">
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="level" type="checkbox" value="All levels" id="checkbox-f2c1">
+                                        <label class="form-check-label" for="checkbox-f2c1">All levels</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="level" type="checkbox" value="Beginner" id="checkbox-f2c2">
+                                        <label class="form-check-label" for="checkbox-f2c2">Beginner</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="level" type="checkbox" value="Intermediate" id="checkbox-f2c3">
+                                        <label class="form-check-label" for="checkbox-f2c3">Intermediate</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="level" type="checkbox" value="Expert" id="checkbox-f2c4">
+                                        <label class="form-check-label" for="checkbox-f2c4">Expert</label><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <!-- //FILTER CATEGORY// -->
+                                <h2 class="accordion-header filter-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse3" aria-expanded="true" aria-controls="panelsStayOpen-collapse3">
+                                        Features
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapse3" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading3">
+                                    <div class="accordion-body">
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="feature" value="IBM badge" id="checkbox-f3c1">
+                                        <label class="form-check-label" for="checkbox-f3c1">IBM badge</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="feature" value="Self-paced" id="checkbox-f3c2">
+                                        <label class="form-check-label" for="checkbox-f3c2">Self-paced</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="feature" value="Subtitles" id="checkbox-f3c3">
+                                        <label class="form-check-label" for="checkbox-f3c3">Subtitles</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="feature" value="Quizzes" id="checkbox-f3c4">
+                                        <label class="form-check-label" for="checkbox-f3c4">Quizzes</label><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <!-- //FILTER CATEGORY// -->
+                                <h2 class="accordion-header filter-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse4" aria-expanded="true" aria-controls="panelsStayOpen-collapse4">
+                                        Rating
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapse4" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading4">
+                                    <div class="accordion-body">
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="radio" value="All ratings" id="checkbox-f4c5">
+                                        <label class="form-check-label" for="checkbox-f4c5">All ratings</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="radio" value="4.5+" id="checkbox-f4c1">
+                                        <label class="form-check-label" for="checkbox-f4c1">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i>
+                                            4.5+
+                                        </label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="radio" value="4.0+" id="checkbox-f4c2">
+                                        <label class="form-check-label" for="checkbox-f4c2">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                            4.0+
+                                        </label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="radio" value="3.5+" id="checkbox-f4c3">
+                                        <label class="form-check-label" for="checkbox-f4c3">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i><i class="fa-regular fa-star"></i>
+                                            3.5+
+                                        </label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="radio" value="3.0+" id="checkbox-f4c4">
+                                        <label class="form-check-label" for="checkbox-f4c4">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
+                                            3.0+
+                                        </label><br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <!-- //FILTER CATEGORY// -->
+                                <h2 class="accordion-header filter-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse5" aria-expanded="true" aria-controls="panelsStayOpen-collapse5">
+                                        Price
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapse5" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading5">
+                                    <div class="accordion-body">
+                                        <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f5c1">
+                                        <label class="form-check-label" for="checkbox-f5c1">Free</label><br>
+                                        <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f5c2">
+                                        <label class="form-check-label" for="checkbox-f5c2">Paid</label><br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col" v-bind:class="isFilterShowing?courseCol_FilterShown:courseCol_FilterHidden">
+                        <!-- //RIGHT HAND COLUMN// -->
+                        <!-- //INFO OF SEARCH// -->
+                        <div class="row">
+                            <div class="col pb-2">
+                                <h4>{{searched}}</h4>
+                            </div>
+                        </div>
+                        <div class="row gy-3 gx-2 mb-3">
+                            <div class="col col-12 col-lg-2 col-md-3 col-sm-4" v-bind:hidden="isFilterShowing">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary bg-blue fw-semibold me-2" type="button" id="btn_show_filters" onclick="showFilters()"><i class="fa-solid fa-filter me-2"></i>Show filters</button>
+                                </div>
+                            </div>
+                            <div class="col align-self-center">
+                                <button type="button" v-for="tag in filtered" v-on:click="removefilter(tag)" v-bind:id="tag+'_'" class="btn btn-sm btn-outline-emphasis rounded-pill px-3 fw-medium">{{tag}}<i class="fa-solid fa-xmark ms-1"></i></button>
+                                <button type="button" class="btn btn-sm btn-dark bg-blue2 rounded-pill px-3 fw-medium">Clear all</button>
+                            </div>
+                        </div>
+
+                        <!-- //LIST OF COURSES// -->
+                        <div class="row g-3 mb-3" v-bind:class="isFilterShowing?courseGrid_FilterShown:courseGrid_FilterHidden">
+                            <!-- new course -->
+                            <div v-for="course in courses" class="col">
+                                <div class="card h-100">
+                                    <img v-bind:src="course.imgsrc" class="card-img-top img-preview-crop" alt="Course image">
+                                    <div class="card-header">
+                                        <div v-if="course.rating % 1">
+                                            {{course.rating}}<i v-for="i in course.rating-0.5" class="fa-solid fa-star ms-1"></i><i class="fa-regular fa-star-half-stroke me-1"></i>{{course.rated}}
+                                        </div>
+                                        <div v-else>
+                                            <i v-for="i in course.rating" class="fa-solid fa-star ms-1"></i> {{course.rated}} have rated
+                                        </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title fs-6 fw-bold">{{course.name}}</h5>
+                                        <p class="card-text text-sm mb-2">{{course.description}}</p>
+                                        <button type="button" data-bs-theme="dark" class="btn btn-secondary bg-emphasis fw-semibold text-sm mt-1" v-bind:onclick="'location.href=' + '&quot;' + course.link + '&quot;'">Explore<i class="fa-solid fa-arrow-right-long ms-2"></i></button>
+                                    </div>
+                                    <div class="card-footer">
+                                        <span v-for="tag in course.tags" class="badge" v-bind:class="badgesMain[tag]"><i class="fa-solid me-1" v-bind:class="badgesSecond[tag]"></i>{{tag}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                       
+                        <!-- PAGINATION -->
+                        <div class="row mt-4">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
     <!-- FOOTER -->
     <section id="footer" class="bg-body mt-4">
         <div class="container content-wrapper">
