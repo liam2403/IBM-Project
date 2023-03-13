@@ -1,46 +1,31 @@
-const draggables = document.querySelectorAll(".card-course");
-const droppables = document.querySelectorAll(".card-course-list");
 
-draggables.forEach((task) => {
-  task.addEventListener("dragstart", () => {
-    task.classList.add("is-dragging");
-  });
-  task.addEventListener("dragend", () => {
-    task.classList.remove("is-dragging");
-  });
-});
+const currentlist = {};
+document.querySelectorAll(".slider").forEach(function (slider) {
+    currentlist[slider.id.slice(5)] = slider.getAttribute('data-orig');
+    slider.addEventListener('mouseup', update);
+})
 
-droppables.forEach((zone) => {
-  zone.addEventListener("dragover", (e) => {
-    e.preventDefault();
-
-    const bottomTask = insertAboveTask(zone, e.clientY);
-    const curTask = document.querySelector(".is-dragging");
-
-    if (!bottomTask) {
-      zone.appendChild(curTask);
-    } else {
-      zone.insertBefore(curTask, bottomTask);
+function update (e) {
+    const val = e.target.value;
+    const style = 'width: ' + val + '%'
+    const num = e.target.id.slice(5);
+    console.log(num);
+    const prog = document.querySelector('#prog' + num);
+    const bar = document.querySelector('#bar' + num);
+    bar.setAttribute('aria-valuenow', val);
+    prog.setAttribute('style', style);
+    if (val == 0) {
+        movetolist(num, "list-0");
+    } else if (val == 100) {
+        movetolist(num, "list-2");
+    } else if (currentlist[num] != "list-1") {
+        movetolist(num, "list-1");
     }
-  });
-});
+}
 
-const insertAboveTask = (zone, mouseY) => {
-  const els = zone.querySelectorAll(".task:not(.is-dragging)");
-
-  let closestTask = null;
-  let closestOffset = Number.NEGATIVE_INFINITY;
-
-  els.forEach((task) => {
-    const { top } = task.getBoundingClientRect();
-
-    const offset = mouseY - top;
-
-    if (offset < 0 && offset > closestOffset) {
-      closestOffset = offset;
-      closestTask = task;
-    }
-  });
-
-  return closestTask;
-};
+function movetolist (num, listID) {
+    const list = document.querySelector("#" + listID);
+    const card = document.querySelector("#info-" + num);
+    list.appendChild(card);
+    currentlist[num] = listID;
+}
