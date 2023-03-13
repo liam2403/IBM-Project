@@ -81,13 +81,20 @@ async function LoadData (data) {
     }
 };
 
-// function saveChanges () {
-//     document.querySelectorAll(".slider").forEach(function (slider) {
-//         // Retrieve ID
-//         // Retrieve current value
+function saveChanges () {
+    document.querySelectorAll(".changed").forEach(function (slider) {
+        // Retrieve ID from this.id
+        // Retrieve original list from data-orig attribute
+        // Retrieve current list from currentlist[ID]
+        // Delete entry from user/OrigList
+        // If currentlist == notStarted, save ID, notStarted, true
+        // if currentlist == completed, save ID, completed, true
+        // otherwise, currentlist = inProgress
+            // Retrieve current value from value attribute
+            // save ID, inProgress, value
 
-//     })
-// }
+    })
+}
 
 window.addEventListener('load', async function (event) {
     event.preventDefault();
