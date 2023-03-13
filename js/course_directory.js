@@ -1,6 +1,7 @@
 // GLOBAL
 // 01 - Course Data API (Json)
-const api = "https://ibm-education-app-default-rtdb.europe-west1.firebasedatabase.app/.json";
+// const api = "https://ibm-education-app-default-rtdb.europe-west1.firebasedatabase.app/.json";
+const api = "http://127.0.0.1:3000/all";
 // https://ibm-education-app-default-rtdb.europe-west1.firebasedatabase.app/
 // 02 - Available Tag Categories
 const CAT = ["Pace", "Topic", "Difficulty", "Cost"];
@@ -54,29 +55,6 @@ function initPageInstance() {
     });
     return app;
 }
-// Function 01 - Theme Switch - Done
-function toggleDarkMode() {
-    var elem = document.body;
-    if (elem.dataset.bsTheme == 'light') {
-        elem.dataset.bsTheme = 'dark';
-        document.getElementById('btn_toggle_light').hidden = false;
-        document.getElementById('btn_toggle_dark').hidden = true;
-
-        document.getElementById('img_ibm_logo').src = '../img/IBM_logo_blue.svg';
-        document.getElementById('img_se_logo').src = '../img/skills_enablement_logo_blue.svg';
-
-        document.documentElement.className = 'dark';
-    } else {
-        elem.dataset.bsTheme = 'light';
-        document.getElementById('btn_toggle_light').hidden = true;
-        document.getElementById('btn_toggle_dark').hidden = false;
-
-        document.getElementById('img_ibm_logo').src = '../img/IBM_logo_black.svg';
-        document.getElementById('img_se_logo').src = '../img/skills_enablement_logo.svg';
-
-        document.documentElement.className = 'light';
-    }
-}
 
 // Function 02 - Construct Data - TBD
 function constructFunc(course_data) {
@@ -86,10 +64,19 @@ function constructFunc(course_data) {
         // construct individual course data
         newCourse = {};
         // ESSENTIAL
-        newCourse.name = course;
-        newCourse.imgsrc = rawCourses[course].imgsrc;
-        newCourse.description = rawCourses[course].Description;
-        newCourse.link = rawCourses[course].Link;
+        newCourse.name = rawCourses[course].Title;
+        if ("imgsrc" in rawCourses[course]) {
+            newCourse.imgsrc = rawCourses[course].imgsrc;
+        } else {
+            newCourse.imgsrc = "https://upload.wikimedia.org/wikipedia/commons/1/18/Grey_Square.svg";
+        }
+        textDesc = rawCourses[course].Description;
+        if (!(rawCourses[course].Description.length < 130)) {
+            textDesc = textDesc.slice(0,130) + "...";
+        }
+        newCourse.description = textDesc;
+        linkCourse = 'http://127.0.0.1:3000/views/course_info.html?id=' + course;
+        newCourse.link = linkCourse;
         newCourse.tags = [];
         newCourse.rating = 0;
         newCourse.rated = 0;
@@ -195,33 +182,4 @@ document.addEventListener('DOMContentLoaded', function () {
     x = [field, level, feature, rating];
     // Fetch Course Data
     allCourse = fetchCourseData(app);
-    // apply splide
-    mountSplides();
 } );
-
-function mountSplides() {
-    var elms = document.getElementsByClassName('splide');
-    
-    for ( var i = 0; i < elms.length; i++ ) {
-      new Splide( elms[i] , {
-        type: 'loop',
-        perPage: 3,
-        perMove: 1,
-        gap: '1rem',
-        drag: 'free',
-        snap: true,
-        pagination: false,
-        breakpoints: {
-            800: {
-                perPage: 2,
-                gap: '0.7rem',
-            },
-            480: {
-                perPage: 1,
-                gap: '0.7rem',
-            }
-        }
-      }
-        ).mount();
-    }
-}
