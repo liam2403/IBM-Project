@@ -170,35 +170,3 @@ span.keeptogether {
     width: 100%;
     height: auto;
 }
-
-.is-dragging {
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
-    background: rgb(50, 50, 50);
-    color: white;
-}
-
-.card-course-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.25);
-  
-    padding: 12px;
-    border-radius: 4px;
-    min-height: 120px;
-  
-    flex-shrink: 0;
-}
-  
-.task {
-    background: white;
-    color: black;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
-  
-    padding: 12px;
-    border-radius: 4px;
-  
-    font-size: 16px;
-    cursor: move;
-}
