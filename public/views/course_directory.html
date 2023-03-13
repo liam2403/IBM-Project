@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Course Directory - IBM Skills Enablement</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Course Explorer - IBM Skills Enablement</title>
+    <link rel="icon" type="image/png" href="../img/favicon.svg">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,7 +10,8 @@
 
     <!-- JavaScript -->
     <script src="https://unpkg.com/vue@2.5.2/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src='../js/app.js'></script>
     <script src='../js/course_directory.js'></script>
 
     <!-- CSS -->
@@ -44,7 +45,7 @@
                             <i class="fa-solid fa-chart-line me-1"></i>Dashboard</a>
                     </li>
                     <li class="nav-item mx-1">
-                        <a href="course_directory.html" class="nav-link fw-medium">
+                        <a href="course_directory.html" class="nav-link active fw-medium">
                             <i class="fas fa-list me-1"></i>Course Explorer</a>
                     </li>
                     <li class="nav-item dropdown fw-medium mx-1">
@@ -283,6 +284,7 @@
             </footer>
         </div>
     </section>
+
     <script>
         window.watsonAssistantChatOptions = {
           integrationID: "424640c5-f22b-4ac4-9a0e-7bb655a85c9e", // The ID of this integration.
@@ -295,7 +297,6 @@
           t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
           document.head.appendChild(t);
         });
-      </script>
-
+    </script>
 
 </body>

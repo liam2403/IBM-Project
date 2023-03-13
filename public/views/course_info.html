@@ -2,35 +2,16 @@
 
 <head>
     <title>Course Info - IBM Skills Enablement</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="../img/favicon.svg">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- JavaScript -->
-    <script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1/dist/es-module-shims.min.js" crossorigin="anonymous"></script>
-    <script type="importmap">
-    {
-      "imports": {
-        "@popperjs/core": "https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js",
-        "bootstrap": "https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.esm.min.js"
-      }
-    }
-    </script>
-
-    <script type="module">
-        import * as bootstrap from 'bootstrap'
-        const dataSpyList = document.querySelectorAll('[data-bs-spy="scroll"]');
-        dataSpyList.forEach((dataSpyEl) => {
-            ScrollSpy.getInstance(dataSpyEl).refresh();
-        });
-    </script>
-  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src='../js/app.js'></script>
     <script type="module" src='../js/course_info.js'></script>
-    
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -120,9 +101,9 @@
                                 <div class="text-sm text-light fw-semibold" id="progress-percent">In progress: 0%</div>
                             </div>                              
                         </div>
-                        <div class="col col-12 col-md-4 col-lg-3">
+                        <div class="col col-12 col-md-4 col-lg-3" id="test">
                             <div class="dropdown d-grid">
-                                <button class="btn btn-lg btn-primary bg-dark-blue dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button id="list-toggle" class="btn btn-lg btn-primary bg-dark-blue dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-plus me-1"></i>Add to list
                                 </button>
                               
@@ -173,7 +154,7 @@
                         <div class="row mx-1">
                             <p class="form-label fw-bold col-form-label col-sm-5"><i class="fa-solid fa-certificate me-1"></i>Badge</p>
                             <div class="col-sm-7">
-                                <a data-key="Badge" id="info-badge" class="form-control-plaintext"></a>
+                                <a data-key="Badge" id="info-badge" class="info-link form-control-plaintext"></a>
                             </div>
                         </div>
                     </div>
