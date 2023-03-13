@@ -45,3 +45,15 @@
     background: no-repeat 50%;
     object-fit: cover;
 }
+
+.bin {
+    position: absolute;
+    top: 18px;
+    right: 10px;
+}
+
+.pause {
+    position: absolute;
+    bottom: 19px;
+    right: 10px;
+}

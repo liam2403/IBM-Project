@@ -76,6 +76,22 @@ app.get('/courses/:id', async (req, res) => {
         })
 });
 
+app.get('/userCourses/:id', async (req, res) => {
+    const id = req.params.id
+    const coursesRef = ref(db)
+    await get(child(coursesRef, "userCourses/" + id))
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                res.status(200).json(snapshot.val());
+            } else {
+                return res.sendStatus(400);
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+});
+
 app.listen(port, () => {
     console.log(`Web app listening on port ${port}`);
 });

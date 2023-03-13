@@ -130,9 +130,6 @@ function LoadData (body) {
         // refresh the scrollspy
         const dataSpyEl = document.querySelector('#long-content-div');
         bootstrap.ScrollSpy.getOrCreateInstance(dataSpyEl).refresh();
-        // const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
-        // console.log(dropdownElementList)
-        // const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl));
     } else {
         document.querySelector("#bottom-section").remove();
     }
