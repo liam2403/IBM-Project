@@ -4,7 +4,6 @@ function checkDarkMode() {
     if (localStorage.getItem('theme') == null) {
         localStorage.setItem('theme', 'light');
     } else if (localStorage.getItem('theme') == 'dark') {
-        console.log("we dark")
         elem.dataset.bsTheme = 'dark';
         document.getElementById('btn_toggle_light').hidden = false;
         document.getElementById('btn_toggle_dark').hidden = true;
