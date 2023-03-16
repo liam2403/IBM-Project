@@ -57,3 +57,19 @@
     bottom: 19px;
     right: 10px;
 }
+
+.btn-action {
+    opacity: 65%;
+}
+
+.btn-action:hover {
+    opacity: 100%;
+    transition: 0.4s;
+    cursor:pointer;
+}
+
+.btn-save-changes {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}

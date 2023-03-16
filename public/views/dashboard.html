@@ -145,25 +145,42 @@
         </div>
     </section>
 
-    <template id="course-template">
-        <div id="info-5" class="card h-100 shadow-sm text-decoration-none mb-2">
-            <div>
-                <div id="bar5" class="rounded-0 rounded-top progress align-self-center" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="height: 10px">
-                    <div id="prog5" class="progress-bar progress-bar-striped" style="width:100%"></div>
+    <button class="btn btn-lg fw-semibold btn-primary bg-dark-blue btn-save-changes" type="button" onclick="showSaveModal()">Save changes</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Delete course</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="deleteModalBody">
+                    Are you sure you want to remove this course from your dashboard?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="deleteConfirmBtn">Confirm</button>
                 </div>
             </div>
-            <a href="http://127.0.0.1:3000/views/course_info.html?id=023" class="text-decoration-none row align-items-center card-body pb-2">
-                <div class="col-4 col-lg-12 col-xl-4 text-center">
-                    <img src="https://images.credly.com/images/de9471ce-018c-4bf4-af49-5c9c1d488613/Data_Science_Tools.png" class="thumbnail">
-                </div>
-                <div class="col-8 col-lg-12 col-xl-8">
-                    <h6 class="text-emphasis fw-bold my-1">Data Visualization Using Python</h6>
-                </div>
-                <small class="text-muted mt-1">Data Science</small>
-            </a>
-            <input id="input5" data-orig="list-2" class="slider mt-1" type="range" min="0" max="100" step="1" value="100" />
         </div>
-    </template>
-
+    </div>
+    <div class="modal fade" id="saveModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="saveModalLabel">Save course progress</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="deleteModalBody">
+                    Do you want to save your changes?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveConfirmBtn">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
