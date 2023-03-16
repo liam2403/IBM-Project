@@ -37,15 +37,18 @@
                 <ul class="navbar-nav ms-auto text-center">
                     <li class="nav-item mx-1">
                         <a href="homepage.html" class="nav-link fw-medium">
-                            <i class="fa-solid fa-house-user me-1"></i>Home</a>
+                            <i class="fa-solid fa-house-user me-1"></i>Home
+                        </a>
                     </li>
                     <li class="nav-item mx-1">
                         <a href="dashboard.html" class="nav-link fw-medium">
-                            <i class="fa-solid fa-chart-line me-1"></i>Dashboard</a>
+                            <i class="fa-solid fa-chart-line me-1"></i>Dashboard
+                        </a>
                     </li>
                     <li class="nav-item mx-1">
                         <a href="course_recommender.html" class="nav-link fw-medium">
-                            <i class="fa-solid fa-book me-1"></i>Course Recommender</a>
+                            <i class="fa-solid fa-book me-1"></i>Course Recommender
+                        </a>
                     </li>
                     <li class="nav-item dropdown fw-medium mx-1">
                         <a href="#" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-regular fa-user me-2"></i>Account</a>
@@ -74,14 +77,14 @@
             <div class="container content-wrapper mt-4 py-2">
                 <div class="row">
                     <div class="col-md-10 col-lg-8 mx-auto">
-                        
-                            <div class="input-group search-bar">
-                                <input type="text" id ="searchbar" class="form-control search-bar-input rounded-start-pill" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <button type="submit" onclick="search()" class="btn btn-outline-success rounded-end-circle">
-                                    <i class="fa-solid fa-magnifying-glass me-1"></i>
-                                </button>
-                            </div>
-                        
+
+                        <div class="input-group search-bar">
+                            <input type="text" id="searchbar" class="form-control search-bar-input rounded-start-pill" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <button type="submit" onclick="search()" class="btn btn-outline-success rounded-end-circle">
+                                <i class="fa-solid fa-magnifying-glass me-1"></i>
+                            </button>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -255,22 +258,22 @@
                                     </div>
                                 </div>
                             </div>
-                       
-                        <!-- PAGINATION -->
-                        <div class="row mt-4">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination justify-content-center">
-                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                </ul>
-                            </nav>
+
+                            <!-- PAGINATION -->
+                            <div class="row mt-4">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination justify-content-center">
+                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
     </div>
     <!-- FOOTER -->
@@ -281,6 +284,17 @@
             </footer>
         </div>
     </section>
-
-
+    <script>
+        window.watsonAssistantChatOptions = {
+            integrationID: "424640c5-f22b-4ac4-9a0e-7bb655a85c9e", // The ID of this integration.
+            region: "us-south", // The region your integration is hosted in.
+            serviceInstanceID: "5b0b27a1-f872-4a44-bce1-6b9b2c6819e7", // The ID of your service instance.
+            onLoad: function (instance) { instance.render(); }
+        };
+        setTimeout(function () {
+            const t = document.createElement('script');
+            t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+            document.head.appendChild(t);
+        });
+    </script>
 </body>
