@@ -1,4 +1,8 @@
-// Retrieve info key-values from db entry and display text on page
+const username = "johnsmith"
+const params = new URLSearchParams(document.location.search);
+const pageID = params.get("id");
+
+/* Retrieve info key-values from db entry and display text on page */
 function ShowInfoText (s) {
     // Get all elems to display items
     const infoElems = document.querySelectorAll(".info-text");
@@ -12,7 +16,7 @@ function ShowInfoText (s) {
     });
 };
 
-// Retrieve link key-values from db entry and change href values on page
+/* Retrieve link key-values from db entry and change href values on page */
 function ShowInfoLinks (s) {
     // Get all elems to display items
     const infoElems = document.querySelectorAll(".info-link");
@@ -26,7 +30,7 @@ function ShowInfoLinks (s) {
     });
 };
 
-// Display stars in rating field
+/* Display stars in rating field */
 function ShowRating (rating) {
     // Calculate number of each type of star icon to display
     const starMap = new Map();
@@ -50,12 +54,16 @@ function ShowRating (rating) {
     document.querySelector("#info-rating").innerHTML = html;
 };
 
+/* Function to set multiple attributes */
 function setAttributes (elem, options) {
     Object.keys(options).forEach((attr) => {
         elem.setAttribute(attr, options[attr]);
     });
 }
 
+/* Create nav/div elems for longer content.
+NOTE: Can be removed later and added straight into HTML
+*/
 function createLongElems () {
     const navList = document.createElement("nav");
     setAttributes(navList, {
@@ -73,7 +81,7 @@ function createLongElems () {
     return [navList, divList];
 };
 
-// Load longer content onto webpage
+/* Load longer content onto webpage */
 function ShowLongContent (section, counter, navList, divList) {
     // Get current item number (for scrollspy to work)
     const elemID = "item-" + counter;
@@ -99,7 +107,12 @@ function ShowLongContent (section, counter, navList, divList) {
     divList.appendChild(divElem);
 };
 
-// Main function: Load details from database onto webpage
+/* Function to add course to list */
+function addToList (list) {
+
+};
+
+/* Main function: Load details from database onto webpage */
 function LoadData (body) {
     document.title = body["Title"];
     // Load general text/links from db entry
@@ -130,24 +143,35 @@ function LoadData (body) {
         // refresh the scrollspy
         const dataSpyEl = document.querySelector('#long-content-div');
         bootstrap.ScrollSpy.getOrCreateInstance(dataSpyEl).refresh();
-        // const dropdownElementList = document.querySelectorAll('.dropdown-toggle');
-        // console.log(dropdownElementList)
-        // const dropdownList = [...dropdownElementList].map(dropdownToggleEl => new bootstrap.Dropdown(dropdownToggleEl));
     } else {
         document.querySelector("#bottom-section").remove();
     }
 };
 
+/* Load progress status */
+async function loadProgress (username, id) {
+    let url = ["http://127.0.0.1:3000/courseprogress", username, id].join("/");
+    let response = await fetch(url);
+    let prog = await response.text();
+    const elemProg = document.querySelector(".progress");
+    elemProg.setAttribute('aria-valuenow', prog);
+    const elemBar = document.querySelector(".progress-bar");
+    elemBar.setAttribute('style', 'width: ' + prog + '%');
+    const elemVal = document.querySelector("#progress-val");
+    elemVal.innerHTML = prog;
+};
+
+/* Main function when page loads */
 window.addEventListener('load', async function (event) {
     event.preventDefault();
-    const params = new URLSearchParams(document.location.search);
-    const pageID = params.get("id");
     try {
         let response = await fetch("http://127.0.0.1:3000/courses/" + pageID);
         let body = await response.json();
         LoadData(body);
+        loadProgress(username, pageID);
     } catch (error) {
         // Simulate an HTTP redirect:
-        window.location.replace("http://127.0.0.1:3000/views/404.html");
+        console.log(error)
+        // window.location.replace("http://127.0.0.1:3000/views/404.html");
     }
 });

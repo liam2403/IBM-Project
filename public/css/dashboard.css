@@ -45,3 +45,31 @@
     background: no-repeat 50%;
     object-fit: cover;
 }
+
+.bin {
+    position: absolute;
+    top: 18px;
+    right: 10px;
+}
+
+.pause {
+    position: absolute;
+    bottom: 19px;
+    right: 10px;
+}
+
+.btn-action {
+    opacity: 65%;
+}
+
+.btn-action:hover {
+    opacity: 100%;
+    transition: 0.4s;
+    cursor:pointer;
+}
+
+.btn-save-changes {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}
