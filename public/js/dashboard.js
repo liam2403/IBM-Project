@@ -13,7 +13,10 @@ async function LoadData (data) {
             let course = await response.json();
             const title = course.Title;
             const topic = course.Topic;
-            const imgsrc = course.imgsrc;
+            let imgsrc = "https://upload.wikimedia.org/wikipedia/commons/1/18/Grey_Square.svg";
+            if (course.imgsrc) {
+                imgsrc = course.imgsrc;
+            }
             const template = `<div id="info-${id}" class="card h-100 shadow-sm text-decoration-none mb-2">
             <i class="fa-regular fa-circle-pause text-muted btn-action pause" id="pause${id}"></i>
             <i class="fa-regular fa-trash-can text-muted btn-action bin" id="bin${id}"></i>
@@ -116,7 +119,7 @@ function showSaveModal () {
 
 /* Function to save user's course list changes*/
 function saveChanges () {
-    const arrChangedCourses = {"notStarted": {}, "inProgress": {}, "completed": {}, "onHold": {}}
+    const arrChangedCourses = {"notStarted": {}, "inProgress": {}, "completed": {}, "onHold": {}};
     // Retrieve all elements that have been changed and add them to arrChangedCourses array
     document.querySelectorAll(".changed").forEach(function (elem) {
         const courseId = elem.id.slice(3);
@@ -172,7 +175,7 @@ window.addEventListener("load", async function (event) {
     } catch (error) {
         console.log(error);
         // Simulate an HTTP redirect:
-        window.location.replace("http://127.0.0.1:3000/views/404.html");
+        // window.location.replace("http://127.0.0.1:3000/views/404.html");
     }
 });
 

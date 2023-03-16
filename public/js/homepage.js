@@ -49,10 +49,9 @@ async function loadCourses (courseList) {
             listElem.insertAdjacentHTML("beforeend", template);
         } catch (error) {
             console.log(error);
-        }
+        };
     };
 };
-
 
 /* Main function when page loads */
 window.addEventListener("load", async function (event) {

@@ -80,6 +80,23 @@ app.get('/courses/:id', async (req, res) => {
         })
 });
 
+/* Get course lists of particular user */
+app.get('/userCourses/:id', async (req, res) => {
+    const id = req.params.id
+    const coursesRef = ref(db)
+    await get(child(coursesRef, "userCourses/" + id))
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                res.status(200).json(snapshot.val());
+            } else {
+                return res.sendStatus(404);
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+});
+
 /* Get specific course list of particular user */
 app.get('/userCourses/:userId/:listName', async (req, res) => {
     const params = req.params;
@@ -91,6 +108,35 @@ app.get('/userCourses/:userId/:listName', async (req, res) => {
                 res.status(200).json(snapshot.val());
             } else {
                 return res.sendStatus(404);
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+});
+
+/* Find user's course progress of course */
+app.get('/courseprogress/:userId/:courseId', async (req, res) => {
+    const params = req.params;
+    const url = ["userCourses", params['userId']].join("/");
+    const coursesRef = ref(db, url)
+    await get(coursesRef)
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                const data = snapshot.val();
+                const listTypes = Object.keys(data);
+                const id = params['courseId']
+                listTypes.forEach((listType) => {
+                    const coursesInList = Object.keys(data[listType]);
+                    for (const courseId of coursesInList) {
+                        if (id == courseId) {
+                            res.status(200).send(String(data[listType][courseId]));
+                        }
+                    }
+                });
+                res.status(404).send("0");
+            } else {
+                return res.status(404).send("0");
             }
         })
         .catch((err) => {
