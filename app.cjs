@@ -80,11 +80,12 @@ app.get('/courses/:id', async (req, res) => {
         })
 });
 
-/* Get course lists of particular user */
-app.get('/userCourses/:id', async (req, res) => {
-    const id = req.params.id
+/* Get specific course list of particular user */
+app.get('/userCourses/:userId/:listName', async (req, res) => {
+    const params = req.params;
+    const url = ["userCourses", params['userId'], params['listName']].join("/");
     const coursesRef = ref(db)
-    await get(child(coursesRef, "userCourses/" + id))
+    await get(child(coursesRef, url))
         .then((snapshot) => {
             if (snapshot.exists()) {
                 res.status(200).json(snapshot.val());

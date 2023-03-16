@@ -11,9 +11,9 @@ async function LoadData (data) {
             listTracker[id] = listType;
             let response = await fetch("http://127.0.0.1:3000/courses/" + id);
             let course = await response.json();
-            const imgsrc = course.imgsrc;
-            const topic = course.Topic;
             const title = course.Title;
+            const topic = course.Topic;
+            const imgsrc = course.imgsrc;
             const template = `<div id="info-${id}" class="card h-100 shadow-sm text-decoration-none mb-2">
             <i class="fa-regular fa-circle-pause text-muted btn-action pause" id="pause${id}"></i>
             <i class="fa-regular fa-trash-can text-muted btn-action bin" id="bin${id}"></i>
@@ -101,7 +101,7 @@ function deleteCourse (id) {
         .catch((error) => {
             console.log(error);
         });
-}
+};
 
 /* Function to ask user to confirm they want to save list changes */
 function showSaveModal () {
