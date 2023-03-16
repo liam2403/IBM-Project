@@ -1,7 +1,6 @@
 // GLOBAL
 // 01 - Course Data API (Json)
-// const api = "https://ibm-education-app-default-rtdb.europe-west1.firebasedatabase.app/.json";
-const api = "http://127.0.0.1:3000/all";
+const api = "https://ibm-education-app-default-rtdb.europe-west1.firebasedatabase.app/.json";
 // https://ibm-education-app-default-rtdb.europe-west1.firebasedatabase.app/
 // 02 - Available Tag Categories
 const CAT = ["Pace", "Topic", "Difficulty", "Cost"];
@@ -55,8 +54,31 @@ function initPageInstance() {
     });
     return app;
 }
+// Function 01 - Theme Switch - Done
+function toggleDarkMode() {
+    var elem = document.body;
+    if (elem.dataset.bsTheme == 'light') {
+        elem.dataset.bsTheme = 'dark';
+        document.getElementById('btn_toggle_light').hidden = false;
+        document.getElementById('btn_toggle_dark').hidden = true;
 
-// Function 02 - Construct Data - TBD
+        document.getElementById('img_ibm_logo').src = '../img/IBM_logo_blue.svg';
+        document.getElementById('img_se_logo').src = '../img/skills_enablement_logo_blue.svg';
+
+        document.documentElement.className = 'dark';
+    } else {
+        elem.dataset.bsTheme = 'light';
+        document.getElementById('btn_toggle_light').hidden = true;
+        document.getElementById('btn_toggle_dark').hidden = false;
+
+        document.getElementById('img_ibm_logo').src = '../img/IBM_logo_black.svg';
+        document.getElementById('img_se_logo').src = '../img/skills_enablement_logo.svg';
+
+        document.documentElement.className = 'light';
+    }
+}
+
+// Function 02 - Construct Data - Done - Change with DB
 function constructFunc(course_data) {
     let Courses = [];
     let rawCourses = course_data.courses;
@@ -65,18 +87,9 @@ function constructFunc(course_data) {
         newCourse = {};
         // ESSENTIAL
         newCourse.name = rawCourses[course].Title;
-        if ("imgsrc" in rawCourses[course]) {
-            newCourse.imgsrc = rawCourses[course].imgsrc;
-        } else {
-            newCourse.imgsrc = "https://upload.wikimedia.org/wikipedia/commons/1/18/Grey_Square.svg";
-        }
-        textDesc = rawCourses[course].Description;
-        if (!(rawCourses[course].Description.length < 130)) {
-            textDesc = textDesc.slice(0,130) + "...";
-        }
-        newCourse.description = textDesc;
-        linkCourse = 'http://127.0.0.1:3000/views/course_info.html?id=' + course;
-        newCourse.link = linkCourse;
+        newCourse.imgsrc = rawCourses[course].imgsrc;
+        newCourse.description = rawCourses[course].Description;
+        newCourse.link = rawCourses[course].Link;
         newCourse.tags = [];
         newCourse.rating = 0;
         newCourse.rated = 0;
@@ -123,7 +136,7 @@ function fetchCourseData(app){
     })
 }
 
-// Function 06 - Update Filter - TBD
+// Function 06 - Update Filter - Done
 function updateFilter() {
     // Tickbox Function
     let newFilter = [];
@@ -144,20 +157,28 @@ function updateFilter() {
     }
     else {
         // filter
+        // for each course
         for (i in app.all) {
-            for (j in app.all[i].tags) {
-                if (newFilter.includes(app.all[i].tags[j]) == true) {
-                    newContent.push(app.all[i]);
+            // for each tags selected
+            let fit = 1;
+            for (j in newFilter) {
+                if (app.all[i].tags.includes(newFilter[j]) == false) {
+                    fit = 0;
                 }
             }
+            // fit?
+            if (fit == 1) {
+                newContent.push(app.all[i]);
+            }
         }
+        // construct info sentence
         app.searched = "Showing " + newContent.length + " Results of filtered tags."
     }
     // update
     app.courses = newContent;
 }
 
-// Function 07 - Remove Filter - TBD
+// Function 07 - Remove Filter - Done
 function removeFilter(t) {
     // Untick
     for (i in x) {
@@ -170,6 +191,38 @@ function removeFilter(t) {
     // Since Update Filter is called automatically, no need to manual update
 }
 
+// Function 08 - Clear All Filter - Done
+function clearAll() {
+    // Reset Instance
+    app.filtered = [];
+    app.searched = "";
+    app.courses = app.all;
+    // Reset HTML
+    for (i in x) {
+        for (var j = 0; j < x[i].length; j++) {
+            x[i][j].checked = false;
+        }
+    }
+}
+
+// Function 09 - Search
+function search() {
+    // get Input
+    let searched = document.getElementById("searchbar").value.toLowerCase();
+    let newContent = [];
+    // for every courses
+    for (i in app.all) {
+        // if name or decription contents substring
+        if (app.all[i].name.toLowerCase().includes(searched) == true || app.all[i].description.toLowerCase().includes(searched) == true) {
+            newContent.push(app.all[i]);
+        }
+    }
+    // reset filter, generate message, set instance value
+    // clearAll();
+    app.searched = "Showing " + newContent.length + " Results including '" + searched + "' .";
+    app.courses = newContent;
+}
+
 // MAIN
 document.addEventListener('DOMContentLoaded', function () {
     // Init Page Instance
@@ -179,7 +232,37 @@ document.addEventListener('DOMContentLoaded', function () {
     var level = document.getElementsByName("level");
     var feature = document.getElementsByName("feature");
     var rating = document.getElementsByName("rating");
-    x = [field, level, feature, rating];
+    var price = document.getElementsByName("price");
+    x = [field, level, feature, rating, price];
     // Fetch Course Data
     allCourse = fetchCourseData(app);
+    // apply splide
+    mountSplides();
 } );
+
+function mountSplides() {
+    var elms = document.getElementsByClassName('splide');
+    
+    for ( var i = 0; i < elms.length; i++ ) {
+      new Splide( elms[i] , {
+        type: 'loop',
+        perPage: 3,
+        perMove: 1,
+        gap: '1rem',
+        drag: 'free',
+        snap: true,
+        pagination: false,
+        breakpoints: {
+            800: {
+                perPage: 2,
+                gap: '0.7rem',
+            },
+            480: {
+                perPage: 1,
+                gap: '0.7rem',
+            }
+        }
+      }
+        ).mount();
+    }
+}

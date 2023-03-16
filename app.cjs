@@ -1,9 +1,11 @@
 'use strict';
 
+// Setting up the server
 const express = require('express')
 const app = express()
 const port = 3000
 
+// Firebase SDK import code
 const { initializeApp } = require ('firebase/app');
 const { getDatabase, ref, get, child, remove, update } = require('firebase/database');
 const firebaseConfig = {
@@ -23,6 +25,7 @@ initializeApp(firebaseConfig);
 // Listen for the courses
 const db = getDatabase();
 
+// Set up the server
 app.use(express.static('public'));
 app.use(express.json());
 
@@ -31,7 +34,9 @@ app.get('/', (req, res) => {
     return res.redirect('http://127.0.0.1:3000/views/index.html');
 });
 
+even-nicer-dashboard
 /* Get list of all courses */
+ course-directory-alt
 app.get('/courses', async (req, res) => {
     const coursesRef = ref(db)
     await get(child(coursesRef, "courses"))
@@ -47,7 +52,10 @@ app.get('/courses', async (req, res) => {
         })
 });
 
+even-nicer-dashboard
 /* Get entire database*/
+
+course-directory-alt
 app.get('/all', async (req, res) => {
     const coursesRef = ref(db)
     await get(coursesRef)
@@ -63,7 +71,10 @@ app.get('/all', async (req, res) => {
         })
 });
 
+even-nicer-dashboard
 /* Get individual course*/
+
+course-directory-alt
 app.get('/courses/:id', async (req, res) => {
     const id = req.params.id
     const coursesRef = ref(db)
@@ -80,6 +91,7 @@ app.get('/courses/:id', async (req, res) => {
         })
 });
 
+even-nicer-dashboard
 /* Get course lists of particular user */
 app.get('/userCourses/:id', async (req, res) => {
     const id = req.params.id
@@ -180,3 +192,4 @@ app.post('/addusercourse/:userId/:listName/', async (req, res) => {
 app.listen(port, () => {
     console.log(`Web app listening on port ${port} at http://127.0.0.1:${port}/`);
 });
+ course-directory-alt

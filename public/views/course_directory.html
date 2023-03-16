@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
 <head>
-    <title>Course Explorer - IBM Skills Enablement</title>
-    <link rel="icon" type="image/png" href="../img/favicon.svg">
+    <title>Course Directory - IBM Skills Enablement</title>
+    <link rel="icon" type="image/png" href="favicon.png">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -10,8 +10,7 @@
 
     <!-- JavaScript -->
     <script src="https://unpkg.com/vue@2.5.2/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    <script src='../js/app.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <script src='../js/course_directory.js'></script>
 
     <!-- CSS -->
@@ -45,8 +44,8 @@
                             <i class="fa-solid fa-chart-line me-1"></i>Dashboard</a>
                     </li>
                     <li class="nav-item mx-1">
-                        <a href="course_directory.html" class="nav-link active fw-medium">
-                            <i class="fas fa-list me-1"></i>Course Explorer</a>
+                        <a href="course_recommender.html" class="nav-link fw-medium">
+                            <i class="fa-solid fa-book me-1"></i>Course Recommender</a>
                     </li>
                     <li class="nav-item dropdown fw-medium mx-1">
                         <a href="#" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-regular fa-user me-2"></i>Account</a>
@@ -75,14 +74,14 @@
             <div class="container content-wrapper mt-4 py-2">
                 <div class="row">
                     <div class="col-md-10 col-lg-8 mx-auto">
-                        <form>
+                        
                             <div class="input-group search-bar">
-                                <input type="text" class="form-control search-bar-input rounded-start-pill" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                <button type="submit" class="btn btn-outline-success rounded-end-circle">
+                                <input type="text" id ="searchbar" class="form-control search-bar-input rounded-start-pill" placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <button type="submit" onclick="search()" class="btn btn-outline-success rounded-end-circle">
                                     <i class="fa-solid fa-magnifying-glass me-1"></i>
                                 </button>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
@@ -107,18 +106,20 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapse1" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading1">
                                     <div class="accordion-body">
-                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Artificial intelligence" id="checkbox-f1c1">
-                                        <label class="form-check-label" for="checkbox-f1c1">Artificial intelligence</label><br>
-                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Cloud computing" id="checkbox-f1c2">
-                                        <label class="form-check-label" for="checkbox-f1c2">Cloud computing</label><br>
-                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Cyber security" id="checkbox-f1c3">
-                                        <label class="form-check-label" for="checkbox-f1c3">Cyber security</label><br>
-                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Data science" id="checkbox-f1c4">
-                                        <label class="form-check-label" for="checkbox-f1c4">Data science</label><br>
-                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Design thinking" id="checkbox-f1c5">
-                                        <label class="form-check-label" for="checkbox-f1c5">Design thinking</label><br>
-                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Quantum computing" id="checkbox-f1c6">
-                                        <label class="form-check-label" for="checkbox-f1c6">Quantum computing</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Artificial Intelligence" id="checkbox-f1c1">
+                                        <label class="form-check-label" for="checkbox-f1c1">Artificial Intelligence</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Big Data" id="checkbox-f1c1">
+                                        <label class="form-check-label" for="checkbox-f1c1">Big Data</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Cloud Computing" id="checkbox-f1c2">
+                                        <label class="form-check-label" for="checkbox-f1c2">Cloud Computing</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Cyber Security" id="checkbox-f1c3">
+                                        <label class="form-check-label" for="checkbox-f1c3">Cyber Security</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Data Science" id="checkbox-f1c4">
+                                        <label class="form-check-label" for="checkbox-f1c4">Data Science</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Design Thinking" id="checkbox-f1c5">
+                                        <label class="form-check-label" for="checkbox-f1c5">Design Thinking</label><br>
+                                        <input class="form-check-input me-1" onclick="updateFilter()" type="checkbox" name="field" value="Quantum Computing" id="checkbox-f1c6">
+                                        <label class="form-check-label" for="checkbox-f1c6">Quantum Computing</label><br>
                                     </div>
                                 </div>
                             </div>
@@ -131,8 +132,6 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapse2" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading2">
                                     <div class="accordion-body">
-                                        <input class="form-check-input me-1" onclick="updateFilter()" name="level" type="checkbox" value="All levels" id="checkbox-f2c1">
-                                        <label class="form-check-label" for="checkbox-f2c1">All levels</label><br>
                                         <input class="form-check-input me-1" onclick="updateFilter()" name="level" type="checkbox" value="Beginner" id="checkbox-f2c2">
                                         <label class="form-check-label" for="checkbox-f2c2">Beginner</label><br>
                                         <input class="form-check-input me-1" onclick="updateFilter()" name="level" type="checkbox" value="Intermediate" id="checkbox-f2c3">
@@ -171,24 +170,22 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapse4" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading4">
                                     <div class="accordion-body">
-                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="radio" value="All ratings" id="checkbox-f4c5">
-                                        <label class="form-check-label" for="checkbox-f4c5">All ratings</label><br>
-                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="radio" value="4.5+" id="checkbox-f4c1">
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="checkbox" value="4.5+" id="checkbox-f4c1">
                                         <label class="form-check-label" for="checkbox-f4c1">
                                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i>
                                             4.5+
                                         </label><br>
-                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="radio" value="4.0+" id="checkbox-f4c2">
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="checkbox" value="4.0+" id="checkbox-f4c2">
                                         <label class="form-check-label" for="checkbox-f4c2">
                                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
                                             4.0+
                                         </label><br>
-                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="radio" value="3.5+" id="checkbox-f4c3">
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="checkbox" value="3.5+" id="checkbox-f4c3">
                                         <label class="form-check-label" for="checkbox-f4c3">
                                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star-half-stroke"></i><i class="fa-regular fa-star"></i>
                                             3.5+
                                         </label><br>
-                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="radio" value="3.0+" id="checkbox-f4c4">
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="rating" type="checkbox" value="3.0+" id="checkbox-f4c4">
                                         <label class="form-check-label" for="checkbox-f4c4">
                                             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i><i class="fa-regular fa-star"></i>
                                             3.0+
@@ -205,9 +202,9 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapse5" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading5">
                                     <div class="accordion-body">
-                                        <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f5c1">
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="price" type="checkbox" value="Free" id="checkbox-f5c1">
                                         <label class="form-check-label" for="checkbox-f5c1">Free</label><br>
-                                        <input class="form-check-input me-1" type="checkbox" value="" id="checkbox-f5c2">
+                                        <input class="form-check-input me-1" onclick="updateFilter()" name="price" type="checkbox" value="Paid" id="checkbox-f5c2">
                                         <label class="form-check-label" for="checkbox-f5c2">Paid</label><br>
                                     </div>
                                 </div>
@@ -230,7 +227,7 @@
                             </div>
                             <div class="col align-self-center">
                                 <button type="button" v-for="tag in filtered" v-on:click="removefilter(tag)" v-bind:id="tag+'_'" class="btn btn-sm btn-outline-emphasis rounded-pill px-3 fw-medium">{{tag}}<i class="fa-solid fa-xmark ms-1"></i></button>
-                                <button type="button" class="btn btn-sm btn-dark bg-blue2 rounded-pill px-3 fw-medium">Clear all</button>
+                                <button type="button" onclick="clearAll()" class="btn btn-sm btn-dark bg-blue2 rounded-pill px-3 fw-medium">Clear all</button>
                             </div>
                         </div>
 
@@ -285,18 +282,5 @@
         </div>
     </section>
 
-    <script>
-        window.watsonAssistantChatOptions = {
-          integrationID: "424640c5-f22b-4ac4-9a0e-7bb655a85c9e", // The ID of this integration.
-          region: "us-south", // The region your integration is hosted in.
-          serviceInstanceID: "5b0b27a1-f872-4a44-bce1-6b9b2c6819e7", // The ID of your service instance.
-          onLoad: function(instance) { instance.render(); }
-        };
-        setTimeout(function(){
-          const t=document.createElement('script');
-          t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
-          document.head.appendChild(t);
-        });
-    </script>
 
 </body>
