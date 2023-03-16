@@ -1,4 +1,6 @@
 const username = "johnsmith"
+const params = new URLSearchParams(document.location.search);
+const pageID = params.get("id");
 
 /* Retrieve info key-values from db entry and display text on page */
 function ShowInfoText (s) {
@@ -105,6 +107,11 @@ function ShowLongContent (section, counter, navList, divList) {
     divList.appendChild(divElem);
 };
 
+/* Function to add course to list */
+function addToList (list) {
+
+};
+
 /* Main function: Load details from database onto webpage */
 function LoadData (body) {
     document.title = body["Title"];
@@ -157,8 +164,6 @@ async function loadProgress (username, id) {
 /* Main function when page loads */
 window.addEventListener('load', async function (event) {
     event.preventDefault();
-    const params = new URLSearchParams(document.location.search);
-    const pageID = params.get("id");
     try {
         let response = await fetch("http://127.0.0.1:3000/courses/" + pageID);
         let body = await response.json();
