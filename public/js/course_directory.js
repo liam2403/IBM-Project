@@ -1,9 +1,10 @@
 // GLOBAL
 // 01 - Course Data API (Json)
 const api = "https://ibm-education-app-default-rtdb.europe-west1.firebasedatabase.app/.json";
-// https://ibm-education-app-default-rtdb.europe-west1.firebasedatabase.app/
 // 02 - Available Tag Categories
 const CAT = ["Pace", "Topic", "Difficulty", "Cost"];
+// 03 - Server Address
+const addr = "127.0.0.1:3000"
 
 // Function 00 - Init Instance
 function initPageInstance() {
@@ -89,7 +90,7 @@ function constructFunc(course_data) {
         newCourse.name = rawCourses[course].Title;
         newCourse.imgsrc = rawCourses[course].imgsrc;
         newCourse.description = rawCourses[course].Description;
-        newCourse.link = rawCourses[course].Link;
+        newCourse.link = "/views/course_info.html?id=" + course;
         newCourse.tags = [];
         newCourse.rating = 0;
         newCourse.rated = 0;
