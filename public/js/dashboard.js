@@ -1,10 +1,11 @@
-
+// Progress slider
 const currentlist = {};
 document.querySelectorAll(".slider").forEach(function (slider) {
     currentlist[slider.id.slice(5)] = slider.getAttribute('data-orig');
     slider.addEventListener('mouseup', update);
 })
 
+// Updates the list the course goes into depending on the progress
 function update (e) {
     const val = e.target.value;
     const style = 'width: ' + val + '%'
@@ -23,6 +24,7 @@ function update (e) {
     }
 }
 
+// Moves the course pannel 
 function movetolist (num, listID) {
     const list = document.querySelector("#" + listID);
     const card = document.querySelector("#info-" + num);
