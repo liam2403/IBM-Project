@@ -1,4 +1,3 @@
-
 const username = "johnsmith";
 const listTracker = {};
 
@@ -184,4 +183,3 @@ window.addEventListener("load", async function (event) {
 window.addEventListener("beforeunload", function (event) {
     event.preventDefault();
 });
-
